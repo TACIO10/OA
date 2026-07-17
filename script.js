@@ -1,4 +1,5 @@
 const cfg = window.SITE_CONFIG || {};
+document.querySelector('.bonus-section')?.setAttribute('id', 'bonus');
 const params = new URLSearchParams(location.search);
 
 function checkoutWithUtm(url) {
