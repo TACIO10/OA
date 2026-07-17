@@ -12,12 +12,13 @@
 .hero-copy{text-align:center}
 .hero-copy .eyebrow{display:flex;align-items:center;justify-content:center}
 .hero-copy .lead{margin-left:auto;margin-right:auto}
+.hero h1{font-size:clamp(2.55rem,4.3vw,4.15rem);line-height:1.03}
 @media(max-width:900px){.hero-grid{padding-top:70px}}
 @media(max-width:620px){
   html,body{max-width:100%;overflow-x:hidden}
   .hero-grid{padding-top:45px}
   .hero-copy,.section-head,.split>div,.audience article{text-align:center}
-  .hero h1{font-size:clamp(2.35rem,11vw,3rem);line-height:1.02;text-wrap:balance}
+  .hero h1{font-size:clamp(2rem,9.5vw,2.55rem);line-height:1.06;text-wrap:balance}
   .hero .lead,.hero-note,.intro,.section-head>p{margin-left:auto;margin-right:auto}
   .eyebrow{display:flex;align-items:center;justify-content:center;line-height:1.45}
   .hero-note{border-left:0;border-top:2px solid var(--gold);padding:12px 0 0;max-width:430px}
