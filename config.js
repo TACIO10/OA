@@ -1,6 +1,6 @@
 // EDITE ESTE ARQUIVO antes de publicar. Não use dados fictícios em produção.
 window.SITE_CONFIG = {
-  checkoutUrl: "#oferta",
+  checkoutUrl: "https://lastlink.com/p/C119A3C82/checkout-payment/",
   prices: { single: "37,90" },
   subjects: [
     ["PT", "Língua Portuguesa", "Crase e concordância"],
