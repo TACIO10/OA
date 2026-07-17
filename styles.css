@@ -6,6 +6,9 @@
 
 /* Hero sem a barra de navegação superior. */
 .hero-grid{padding-top:30px}
+.hero-copy{text-align:center}
+.hero-copy .eyebrow{display:flex;align-items:center;justify-content:center}
+.hero-copy .lead{margin-left:auto;margin-right:auto}
 @media(max-width:900px){.hero-grid{padding-top:70px}}
 @media(max-width:620px){
   html,body{max-width:100%;overflow-x:hidden}
