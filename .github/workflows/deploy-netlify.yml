@@ -1,0 +1,43 @@
+name: Publicar no Netlify
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: netlify-production
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Deploy de produção
+    runs-on: ubuntu-latest
+    env:
+      NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+      NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+
+    steps:
+      - name: Baixar o projeto
+        uses: actions/checkout@v4
+
+      - name: Conferir configuração
+        shell: bash
+        run: |
+          if [ -z "$NETLIFY_AUTH_TOKEN" ] || [ -z "$NETLIFY_SITE_ID" ]; then
+            echo "Cadastre NETLIFY_AUTH_TOKEN e NETLIFY_SITE_ID nos Secrets do GitHub."
+            exit 1
+          fi
+
+      - name: Preparar arquivos públicos
+        shell: bash
+        run: |
+          mkdir -p deploy/assets
+          cp index.html styles.css script.js config.js deploy/
+          cp assets/favicon.svg assets/hero-candidato.webp deploy/assets/
+
+      - name: Publicar no Netlify
+        run: npx --yes netlify-cli@latest deploy --prod --dir=deploy --site="$NETLIFY_SITE_ID" --auth="$NETLIFY_AUTH_TOKEN" --message="GitHub Actions $GITHUB_SHA"
