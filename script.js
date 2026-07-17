@@ -46,13 +46,48 @@ faq.addEventListener('click', e => {
 });
 
 const audioBtn = document.querySelector('.audio-btn');
-if (cfg.audio?.src) {
-  const audio = new Audio(cfg.audio.src);
+const tracks = cfg.audio?.tracks || [];
+if (audioBtn && tracks.length) {
+  const audio = new Audio();
+  const title = document.querySelector('.track-main h3');
+  const subject = document.querySelector('.track-main>p');
+  const coverTitle = document.querySelector('.album-art span');
+  const coverCode = document.querySelector('.album-art b');
+  const progress = document.querySelector('.bar i');
+  const progressBar = document.querySelector('.bar');
+  const currentTime = document.querySelector('.current-time');
+  const duration = document.querySelector('.duration');
+  const volume = document.querySelector('.volume input');
+  const trackButtons = [...document.querySelectorAll('.track-list button')];
+
+  const formatTime = seconds => Number.isFinite(seconds) ? `${Math.floor(seconds / 60)}:${String(Math.floor(seconds % 60)).padStart(2, '0')}` : '--:--';
+  const selectTrack = (index, autoplay = false) => {
+    const track = tracks[index]; if (!track) return;
+    audio.src = track.src; audio.load();
+    title.textContent = track.title; subject.textContent = track.subject || 'Amostra da disciplina';
+    coverTitle.innerHTML = track.title.replace(' ', '<br>'); coverCode.textContent = track.code || String(index + 1).padStart(2, '0');
+    audioBtn.setAttribute('aria-label', `Tocar ${track.title}`);
+    trackButtons.forEach((btn, i) => btn.classList.toggle('active', i === index));
+    progress.style.width = '0%'; currentTime.textContent = '0:00'; duration.textContent = '--:--';
+    if (autoplay) audio.play();
+  };
+
+  audio.volume = Number(volume.value);
   audioBtn.addEventListener('click', () => audio.paused ? audio.play() : audio.pause());
-  audio.addEventListener('play', () => audioBtn.textContent = '❚❚');
-  audio.addEventListener('pause', () => audioBtn.textContent = '▶');
-} else {
-  audioBtn.addEventListener('click', () => alert('Demonstração ainda não configurada. Adicione a URL oficial em config.js.'));
+  trackButtons.forEach(btn => btn.addEventListener('click', () => selectTrack(Number(btn.dataset.track), true)));
+  volume.addEventListener('input', () => { audio.volume = Number(volume.value); });
+  audio.addEventListener('play', () => { audioBtn.textContent = '❚❚'; audioBtn.setAttribute('aria-label', 'Pausar demonstração'); });
+  audio.addEventListener('pause', () => { audioBtn.textContent = '▶'; });
+  audio.addEventListener('loadedmetadata', () => { duration.textContent = formatTime(audio.duration); });
+  audio.addEventListener('timeupdate', () => {
+    const percent = audio.duration ? (audio.currentTime / audio.duration) * 100 : 0;
+    progress.style.width = `${percent}%`; progressBar.setAttribute('aria-valuenow', Math.round(percent)); currentTime.textContent = formatTime(audio.currentTime);
+  });
+  audio.addEventListener('ended', () => { audioBtn.textContent = '▶'; });
+  progressBar.addEventListener('click', event => {
+    if (!audio.duration) return; const rect = progressBar.getBoundingClientRect(); audio.currentTime = ((event.clientX - rect.left) / rect.width) * audio.duration;
+  });
+  selectTrack(0);
 }
 
 const observer = new IntersectionObserver(entries => entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } }), { threshold: .12 });

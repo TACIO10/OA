@@ -10,5 +10,11 @@ window.SITE_CONFIG = {
     ["RL", "Raciocínio Lógico", "Proposições lógicas"],
     ["LE", "Legislação Especial", "Conteúdo a confirmar"]
   ],
-  audio: { src: "", title: "Direitos e Garantias Fundamentais" }
+  audio: {
+    tracks: [
+      { title: "Direito Constitucional", subject: "Demonstração", src: "assets/direito-constitucional.mp3", code: "DC" },
+      { title: "Direito Administrativo", subject: "Demonstração", src: "assets/direito-administrativo.mp3", code: "DA" },
+      { title: "Direito Penal", subject: "Demonstração", src: "assets/direito-penal.mp3", code: "DP" }
+    ]
+  }
 };
