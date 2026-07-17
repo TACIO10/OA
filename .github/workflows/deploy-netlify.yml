@@ -36,7 +36,7 @@ jobs:
         shell: bash
         run: |
           mkdir -p deploy/assets
-          cp index.html styles.css script.js config.js deploy/
+          cp index.html styles.css script.js config.js _headers deploy/
           cp assets/favicon.svg assets/hero-candidato.webp assets/interface-aplicativo.webp assets/bonus-*.webp assets/*.mp3 deploy/assets/
 
       - name: Publicar no Netlify
