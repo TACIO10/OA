@@ -37,7 +37,7 @@ jobs:
         run: |
           mkdir -p deploy/assets
           cp index.html styles.css script.js config.js deploy/
-          cp assets/favicon.svg assets/hero-candidato.webp assets/interface-aplicativo.webp assets/*.mp3 deploy/assets/
+          cp assets/favicon.svg assets/hero-candidato.webp assets/interface-aplicativo.webp assets/bonus-*.webp assets/*.mp3 deploy/assets/
 
       - name: Publicar no Netlify
         run: npx --yes netlify-cli@latest deploy --prod --dir=deploy --site="$NETLIFY_SITE_ID" --auth="$NETLIFY_AUTH_TOKEN" --message="GitHub Actions $GITHUB_SHA"
