@@ -26,7 +26,7 @@ const faqData = [
   ["Onde posso ouvir? Funciona no celular?", "A proposta é oferecer acesso pelo celular, tablet ou computador. Confirme requisitos e navegadores da plataforma antes da publicação."],
   ["Posso baixar ou ouvir offline?", "[DEFINIR REGRA REAL DE DOWNLOAD E ACESSO OFFLINE ANTES DE PUBLICAR]"],
   ["As letras ficam disponíveis?", "Sim, se esse recurso estiver efetivamente incluído na versão final da plataforma e da oferta."],
-  ["O pagamento é mensal ou único?", "A página está preparada para planos mensal, anual e vitalício. Exiba apenas os planos e condições realmente disponíveis."],
+  ["O pagamento é mensal ou único?", "O pagamento é único, no valor de R$ 37,90. Não há mensalidade ou cobrança recorrente."],
   ["Como receberei o acesso?", "[INFORMAR FLUXO REAL DE ENTREGA DO ACESSO E PRAZO]"],
   ["Existe garantia?", "A oferta prevê 7 dias para avaliação, com reembolso conforme os termos da plataforma de pagamento."],
   ["O produto possui vínculo com a Polícia Federal?", "Não. Este é um produto educacional independente e não possui vínculo, parceria, autorização ou endosso da Polícia Federal."],

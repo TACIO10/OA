@@ -6,6 +6,7 @@
 
 .bar{cursor:pointer}.volume{display:flex;align-items:center;gap:6px;color:var(--blue);font-size:.75rem}.volume input{width:75px;accent-color:var(--gold)}.track-list button{cursor:pointer}.track-list button.active{color:var(--blue);background:#f1f6f8}.track-list button.active span{color:var(--blue)}
 .testimonial-head{display:flex;align-items:center;gap:12px}.testimonial-head .avatar{flex:0 0 44px;background:var(--navy);color:var(--gold);font:800 1rem Sora}.testimonial-head b,.testimonial-head small{display:block}.testimonial-head b{font-size:.75rem}.testimonial-head small{color:var(--muted);font-size:.65rem;margin-top:3px}.testimonials .stars{letter-spacing:2px;color:var(--gold)}.testimonials article{display:flex;flex-direction:column}.testimonials article>p{font-size:.78rem;line-height:1.7}.testimonials article:nth-child(4),.testimonials article:nth-child(5){grid-column:span 1}
+.pricing.single-price{display:block;max-width:480px}.pricing.single-price .featured{transform:none}.pricing.single-price .price b{font-size:2.5rem}.pricing.single-price article>h3,.pricing.single-price .price,.pricing.single-price article>small{text-align:center;display:block}
 
 /* Hero sem a barra de navegação superior. */
 .hero-grid{padding-top:30px}

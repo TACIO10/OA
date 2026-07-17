@@ -1,7 +1,7 @@
 // EDITE ESTE ARQUIVO antes de publicar. Não use dados fictícios em produção.
 window.SITE_CONFIG = {
   checkoutUrl: "#oferta",
-  prices: { monthly: "19,90", annual: "97,90", lifetime: "197,00" },
+  prices: { single: "37,90" },
   subjects: [
     ["PT", "Língua Portuguesa", "Crase e concordância"],
     ["DC", "Direito Constitucional", "Direitos fundamentais"],
