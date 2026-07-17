@@ -7,4 +7,41 @@
 /* Hero sem a barra de navegação superior. */
 .hero-grid{padding-top:30px}
 @media(max-width:900px){.hero-grid{padding-top:70px}}
-@media(max-width:620px){.hero-grid{padding-top:45px}}
+@media(max-width:620px){
+  html,body{max-width:100%;overflow-x:hidden}
+  .hero-grid{padding-top:45px}
+  .hero-copy,.section-head,.split>div,.audience article{text-align:center}
+  .hero h1{font-size:clamp(2.35rem,11vw,3rem);line-height:1.02;text-wrap:balance}
+  .hero .lead,.hero-note,.intro,.section-head>p{margin-left:auto;margin-right:auto}
+  .eyebrow{display:flex;align-items:center;justify-content:center;line-height:1.45}
+  .hero-note{border-left:0;border-top:2px solid var(--gold);padding:12px 0 0;max-width:430px}
+  .hero-copy small{text-align:center}
+  .trust{justify-content:center}
+  h2{font-size:clamp(1.9rem,9vw,2.35rem);line-height:1.1;text-align:center;text-wrap:balance}
+  .kicker{text-align:center;line-height:1.5}
+  .section-head>div{max-width:none}
+  .section-head>p{text-align:center}
+  .steps article{text-align:left;grid-template-columns:52px 1fr;gap:14px}
+  .steps article>b{font-size:2rem}
+  .panel h3,.feature-grid h3,.subject-grid h3,.content-cards h3{text-align:center}
+  .feature-grid article{text-align:center}
+  .subject-grid article{padding:18px 14px}
+  .subject-grid article>span{flex:0 0 42px}
+  .subject-grid article>div{text-align:left}
+  .moments article{min-width:0;padding:24px 8px}
+  .controls{flex-wrap:wrap}
+  .timeline{min-width:130px}
+  .lyrics-btn{width:100%}
+  .desktop-ui{width:100%;overflow:hidden}
+  .ui-cards{grid-template-columns:repeat(2,1fr)}
+  .content-cards article{text-align:left}
+  .pricing{width:min(100% - 28px,600px)}
+  .pricing h3,.price,.pricing article>small{text-align:center;display:block}
+  .pricing .btn{white-space:normal;line-height:1.35;text-align:center}
+  .faq button{gap:20px;line-height:1.35}
+  .faq button span{flex:0 0 auto}
+  .final-cta .btn{width:100%;white-space:normal;text-align:center;line-height:1.35}
+  .footer-grid{text-align:center}
+  footer .brand{justify-content:center}
+  .to-top{position:static;margin:10px auto 0}
+}
