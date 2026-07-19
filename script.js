@@ -20,7 +20,7 @@ function applySvgIcons() {
   document.querySelectorAll('.stars').forEach(el => { el.innerHTML = Array.from({ length: 5 }, () => icon('star')).join(''); });
   document.querySelectorAll('.bonus-icon').forEach((el, i) => { el.innerHTML = icon(['planner','brain','users'][i]); });
   document.querySelectorAll('.value-items>div>span').forEach(el => { el.innerHTML = icon('check'); });
-  document.querySelector('.secure').innerHTML = `${icon('lock')} Compra segura • Pagamento único • Acesso imediato • Garantia de 7 dias`;
+  document.querySelector('.secure').innerHTML = `${icon('lock')} Compra segura • Pagamento único • Acesso imediato • Garantia de 30 dias`;
   document.querySelector('.anchor-arrow').innerHTML = icon('arrow-down');
   document.querySelector('.to-top').innerHTML = icon('arrow-up');
 }
@@ -51,9 +51,9 @@ const faqData = [
   ["Onde posso ouvir? Funciona no celular?", "A proposta é oferecer acesso pelo celular, tablet ou computador. Confirme requisitos e navegadores da plataforma antes da publicação."],
   ["Posso baixar ou ouvir offline?", "[DEFINIR REGRA REAL DE DOWNLOAD E ACESSO OFFLINE ANTES DE PUBLICAR]"],
   ["As letras ficam disponíveis?", "Sim, se esse recurso estiver efetivamente incluído na versão final da plataforma e da oferta."],
-  ["O pagamento é mensal ou único?", "O pagamento é único, no valor de R$ 37,90. Não há mensalidade ou cobrança recorrente."],
+  ["O pagamento é mensal ou único?", "O pagamento é único, no valor de R$ 47,00. Não há mensalidade ou cobrança recorrente."],
   ["Como receberei o acesso?", "[INFORMAR FLUXO REAL DE ENTREGA DO ACESSO E PRAZO]"],
-  ["Existe garantia?", "A oferta prevê 7 dias para avaliação, com reembolso conforme os termos da plataforma de pagamento."],
+  ["Existe garantia?", "A oferta prevê 30 dias para avaliação, com reembolso conforme os termos da plataforma de pagamento."],
   ["O produto possui vínculo com a Polícia Federal?", "Não. Este é um produto educacional independente e não possui vínculo, parceria, autorização ou endosso da Polícia Federal."],
   ["Posso usar as faixas em aulas ou redes sociais?", "[INFORMAR A LICENÇA DE USO REAL E AS REGRAS DE DIREITOS AUTORAIS]"]
 ];

@@ -1,7 +1,7 @@
 // EDITE ESTE ARQUIVO antes de publicar. Não use dados fictícios em produção.
 window.SITE_CONFIG = {
   checkoutUrl: "https://lastlink.com/p/C119A3C82/checkout-payment/",
-  prices: { single: "37,90" },
+  prices: { single: "47,00" },
   subjects: [
     ["PT", "Língua Portuguesa", "Crase e concordância"],
     ["DC", "Direito Constitucional", "Direitos fundamentais"],
