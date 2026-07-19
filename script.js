@@ -1,6 +1,30 @@
 const cfg = window.SITE_CONFIG || {};
 document.querySelector('.bonus-section')?.setAttribute('id', 'bonus');
 const params = new URLSearchParams(location.search);
+const icon = name => `<svg class="svg-icon" aria-hidden="true"><use href="assets/icons.svg#${name}"></use></svg>`;
+
+function applySvgIcons() {
+  document.querySelector('.topbar').innerHTML = `${icon('music')} Seu plano personalizado de músicas está pronto.`;
+  document.querySelectorAll('.trust span').forEach((el, i) => { el.innerHTML = `${icon(['headphones','grid','bolt','shield-check'][i])} ${el.textContent.replace(/^[^\p{L}\p{N}]+/u, '')}`; });
+  document.querySelectorAll('.four b').forEach((el, i) => { el.innerHTML = icon(['pin','clock','repeat','plus'][i]); });
+  document.querySelectorAll('.panel-icon').forEach((el, i) => { el.innerHTML = icon(i ? 'check' : 'x'); });
+  document.querySelectorAll('.moments article>span').forEach((el, i) => { el.innerHTML = icon(['car','dumbbell','walk','home','coffee','moon'][i]); });
+  document.querySelector('.play-mini').innerHTML = icon('play');
+  document.querySelector('.audio-btn').innerHTML = icon('play');
+  const volumeLabel = document.querySelector('.volume'); volumeLabel.firstChild.textContent = ''; volumeLabel.insertAdjacentHTML('afterbegin', icon('volume'));
+  document.querySelector('.demo-warning').innerHTML = `${icon('music')} Faixas de demonstração do produto.`;
+  document.querySelectorAll('.feature-grid article>span').forEach((el, i) => { el.innerHTML = icon(['headphones','grid','repeat','devices','list','plus'][i]); });
+  document.querySelector('.ui-feature span').innerHTML = icon('play');
+  document.querySelectorAll('.content-cards article>span').forEach((el, i) => { el.innerHTML = icon(['music','play','list','grid','devices','help'][i]); });
+  document.querySelectorAll('.testimonial-head small').forEach(el => { el.innerHTML = `${icon('pin')} ${el.textContent.replace(/^\s*📍\s*/, '')}`; });
+  document.querySelectorAll('.stars').forEach(el => { el.innerHTML = Array.from({ length: 5 }, () => icon('star')).join(''); });
+  document.querySelectorAll('.bonus-icon').forEach((el, i) => { el.innerHTML = icon(['planner','brain','users'][i]); });
+  document.querySelectorAll('.value-items>div>span').forEach(el => { el.innerHTML = icon('check'); });
+  document.querySelector('.secure').innerHTML = `${icon('lock')} Compra segura • Pagamento único • Acesso imediato • Garantia de 7 dias`;
+  document.querySelector('.anchor-arrow').innerHTML = icon('arrow-down');
+  document.querySelector('.to-top').innerHTML = icon('arrow-up');
+}
+applySvgIcons();
 
 function checkoutWithUtm(url) {
   if (!url || url.startsWith('#')) return url || '#oferta';
@@ -36,13 +60,13 @@ const faqData = [
 const faq = document.getElementById('faq-list');
 faqData.forEach(([q, a], i) => {
   const item = document.createElement('div'); item.className = 'faq-item';
-  item.innerHTML = `<h3><button aria-expanded="false" aria-controls="faq-${i}">${q}<span>＋</span></button></h3><div id="faq-${i}" class="faq-answer" hidden><p>${a}</p></div>`;
+  item.innerHTML = `<h3><button aria-expanded="false" aria-controls="faq-${i}">${q}<span>${icon('plus')}</span></button></h3><div id="faq-${i}" class="faq-answer" hidden><p>${a}</p></div>`;
   faq.append(item);
 });
 faq.addEventListener('click', e => {
   const btn = e.target.closest('button'); if (!btn) return;
   const open = btn.getAttribute('aria-expanded') === 'true';
-  btn.setAttribute('aria-expanded', String(!open)); btn.querySelector('span').textContent = open ? '＋' : '−';
+  btn.setAttribute('aria-expanded', String(!open)); btn.querySelector('span').innerHTML = icon(open ? 'plus' : 'x');
   document.getElementById(btn.getAttribute('aria-controls')).hidden = open;
 });
 
@@ -77,14 +101,14 @@ if (audioBtn && tracks.length) {
   audioBtn.addEventListener('click', () => audio.paused ? audio.play() : audio.pause());
   trackButtons.forEach(btn => btn.addEventListener('click', () => selectTrack(Number(btn.dataset.track), true)));
   volume.addEventListener('input', () => { audio.volume = Number(volume.value); });
-  audio.addEventListener('play', () => { audioBtn.textContent = '❚❚'; audioBtn.setAttribute('aria-label', 'Pausar demonstração'); });
-  audio.addEventListener('pause', () => { audioBtn.textContent = '▶'; });
+  audio.addEventListener('play', () => { audioBtn.innerHTML = icon('pause'); audioBtn.setAttribute('aria-label', 'Pausar demonstração'); });
+  audio.addEventListener('pause', () => { audioBtn.innerHTML = icon('play'); });
   audio.addEventListener('loadedmetadata', () => { duration.textContent = formatTime(audio.duration); });
   audio.addEventListener('timeupdate', () => {
     const percent = audio.duration ? (audio.currentTime / audio.duration) * 100 : 0;
     progress.style.width = `${percent}%`; progressBar.setAttribute('aria-valuenow', Math.round(percent)); currentTime.textContent = formatTime(audio.currentTime);
   });
-  audio.addEventListener('ended', () => { audioBtn.textContent = '▶'; });
+  audio.addEventListener('ended', () => { audioBtn.innerHTML = icon('play'); });
   progressBar.addEventListener('click', event => {
     if (!audio.duration) return; const rect = progressBar.getBoundingClientRect(); audio.currentTime = ((event.clientX - rect.left) / rect.width) * audio.duration;
   });
